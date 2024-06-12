@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            font-size: 16pt;
+            scroll-behavior: smooth;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        .cursor {
+            top: -100px;
+            left: -100px;
+            position: absolute;
+            fill: none;
+            stroke: #393939;
+            stroke-width: 4px;
+            filter: url(#filter-1);
+            transform: translate(-50%, -50%) scale(-0.5);
+            pointer-events: none;
+        }
+
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            align-items: end;
+            align-content: space-between;
+            justify-items: stretch;
+            /* font-family: system-ui, sans-serif; */
+            font-family: 'Anton', sans-serif;
+            font-weight: 400;
+            /* background-color: #4801ff; */
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .logo-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60%;
+            height: 60%;
+            transform: translate(-50%, -50%);
+            background-image: url('ppbg.png');
+            /* Replace with the path to your PNG image */
+            background-size: cover;
+            /* Cover the entire div */
+            background-position: center;
+            /* Center the image */
+            background-repeat: no-repeat;
+            /* Prevent the image from repeating */
+            z-index: -1;
+            opacity: 5%;
+            filter: blur(4px);
+            /* Place it behind other content */
+        }
+
+        .footer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            text-align: right;
+            flex-direction: row;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            z-index: 0;
+            padding: 30px;
+        }
+
+        .pages {
+            width: 100%;
+        }
+
+        .link:hover {
+            opacity: 60%;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            text-align: left;
+            flex-direction: row;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            z-index: 0;
+            padding: 30px;
+        }
+
+        .logo img {
+            max-width: 100px;
+        }
+
+
+        .contact-info {
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .contact-links {
+            text-align: right;
+        }
+
+        /* Styles for the container */
+        .container {
+            overflow-x: auto;
+            /* Enable horizontal scrolling */
+            white-space: nowrap;
+            /* Prevent line breaks */
+            width: 100%;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            /* Set width to 100% of the viewport */
+            perspective: 20vmin;
+            /* transform: rotateZ(10deg); */
+            z-index: 1;
+        }
+
+        /* Styles for the horizontal list */
+        .list-wraper {
+            list-style-type: none;
+            /* Remove default list bullets */
+            padding: 0;
+            /* Remove default padding */
+            margin: 0;
+            margin-left: 100px;
+            /* Remove default margin */
+            display: inline-flex;
+            /* Use flexbox for horizontal layout */
+            transform-origin: left;
+            transform: rotateX(6deg);
+            transform-style: preserve-3d;
+        }
+
+        /* Style for list items */
+        .list-wraper li {
+            margin-right: 10px;
+            /* Add some space between list items */
+        }
+
+        /* Style for the last list item (no margin) */
+        .list-wraper li:last-child {
+            margin-right: 0;
+            /* Remove margin for the last item */
+        }
+
+        .list {
+            list-style-type: none;
+            font-size: 160px;
+            font-weight: 1000;
+            letter-spacing: 2px;
+            /* margin-right: 150px; */
+            margin-left: 150px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: right;
+            transition: color 0.5s, transform 0.5s;
+        }
+
+        .date {
+            position: absolute;
+            top: 73%;
+            right: 101%;
+            font-size: 0.1em;
+        }
+
+        .type {
+            position: absolute;
+            top: 84%;
+            right: 101%;
+            font-size: 0.07em;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container-date-text {
+            position: relative;
+        }
+
+        .text-with-line {
+            display: inline-block;
+            position: relative;
+            padding-left: 30px;
+            cursor: none;
+        }
+
+        .text-with-line::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 90%;
+            background-color: black;
+            cursor: none;
+        }
+
+        .list:hover {
+            -webkit-text-stroke: 0.01px #000;
+            color: transparent;
+            transform: scale(1.1) rotateX(-3deg);
+            cursor: pointer;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            cursor: none;
+        }
+
+        .list:hover .date {
+            -webkit-text-stroke: initial;
+            color: initial;
+        }
+
+        .list:hover .type {
+            -webkit-text-stroke: initial;
+            color: initial;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-bg">
+    </div>
+
+    <div class="footer-section">
+        <div class="pages">
+            <p><a class="hover-element link" href="about.html">About</a></p>
+        </div>
+    </div>
+
+    <!-- Container to center the horizontal list -->
+    <div class="container" id="scrollContainer" onwheel="scrollHorizontally(event)">
+        <!-- Horizontal List -->
+        <ul class="list-wraper">
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2023</span>
+                    <span class="type">Conception<br>Logo</span>
+                    <span class="text-with-line hover-element" onclick="location='loading.html'">EDECLIC</span>
+                </span>
+            </li>
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2024</span>
+                    <span class="type">Identié<br>Visuelle</span>
+                    <span class="text-with-line hover-element">PROJET 2</span>
+                </span>
+            </li>
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2018</span>
+                    <span class="type">Assets<br>Event</span>
+                    <span class="text-with-line hover-element">Le Roi Du Fajitas</span>
+                </span>
+            </li>
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2018</span>
+                    <span class="type">Réseaux<br>Sociaux</span>
+                    <span class="text-with-line hover-element">PROJET 2</span>
+                </span>
+            </li>
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2018</span>
+                    <span class="text-with-line hover-element">PROJET 2</span>
+                </span>
+            </li>
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2018</span>
+                    <span class="text-with-line hover-element">PROJET 2</span>
+                </span>
+            </li>
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2018</span>
+                    <span class="text-with-line hover-element">PROJET 2</span>
+                </span>
+            </li>
+            <li class="list">
+                <span class="container-date-text">
+                    <span class="date">2018</span>
+                    <span class="text-with-line hover-element">PROJET 2</span>
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="header-section">
+        <div class="logo-info">
+            <div class="logo">
+                <img class="hover-element" src="pp.png" alt="Logo">
+            </div>
+            <div class="info">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div>
+                            <p class="text1 hover-element">BELLACHE Adam</p>
+                        </div>
+                        <div class="text2">
+                            <p class="text1 hover-element">Graphic Designer</p>
+                        </div>
+                    </div>
+                    <div class="contact-contact">
+                        <p><a class="hover-element link" href="tel:+1234567890">+(213) 0794 52 35 08</a></p>
+                        <p><a class="hover-element link" href="mailto:example@example.com">bellch.adam@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-links">
+            <p><a class="hover-element link" href="https://www.linkedin.com/in/adam-bel/">LinkedIn</a></p>
+            <p><a class="hover-element link" href="https://www.behance.net/BelAdam">Behance</a></p>
+            <p><a class="hover-element link" href="#">Instagram</a></p>
+        </div>
+    </div>
+
+    <svg class="cursor" width="75" height="75" viewBox="0 0 140 140">
+        <defs>
+            <filter id="filter-1" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+                <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="10" result="warp"></feTurbulence>
+                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="60" in="SourceGraphic" in2="warp">
+                </feDisplacementMap>
+            </filter>
+        </defs>
+        <circle class="cursor-circle" cx="70" cy="70" r="67"></circle>
+    </svg>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.css">
+    <script src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+
+    <script>
+        let scrollInterval;
+
+        function scrollHorizontally(event) {
+            event.preventDefault(); // Prevent default scrolling behavior
+
+            var container = document.getElementById("scrollContainer");
+            var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+            container.scrollLeft -= (delta * 50); // Multiply by a factor to adjust scrolling speed
+        }
+
+        function startScrolling(direction) {
+            const container = document.getElementById('scrollContainer');
+            const scrollSpeed = 10; // Adjust this value for scroll speed
+            scrollInterval = setInterval(() => {
+                container.scrollLeft += direction * scrollSpeed;
+            }, 20); // Adjust interval timing for smoothness
+        }
+
+        function stopScrolling() {
+            clearInterval(scrollInterval);
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            const threshold = 200; // Distance from the edge to start scrolling
+            const middleZoneTop = window.innerHeight * 0.2; // 40% from the top
+            const middleZoneBottom = window.innerHeight * 0.7; // 60% from the top
+
+            if (event.clientX < threshold && event.clientY > middleZoneTop && event.clientY < middleZoneBottom) {
+                // Near the middle-left edge
+                stopScrolling();
+                startScrolling(-1);
+            } else if (event.clientX > window.innerWidth - threshold && event.clientY > middleZoneTop && event.clientY < middleZoneBottom) {
+                // Near the middle-right edge
+                stopScrolling();
+                startScrolling(1);
+            } else {
+                stopScrolling();
+            }
+        });
+
+        document.addEventListener('mouseleave', stopScrolling);
+    </script>
+
+    <script>
+        const cursor = document.querySelector(".cursor");
+        const links = document.querySelectorAll(".link");
+        const turbulence = document.querySelector("feTurbulence");
+        const circle = document.querySelector(".cursor-circle");
+        const durationTime = 1; //0.4
+
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.top = e.pageY + "px";
+            cursor.style.left = e.pageX + "px";
+        });
+
+        document.addEventListener("mouseover", (e) => {
+            if (!e.target.matches(".hover-element")) return;
+            gsap.to(turbulence, {
+                duration: durationTime,
+                startAt: { attr: { baseFrequency: 0.05 } },
+                attr: { baseFrequency: 0 }
+            });
+
+            gsap.to(circle, {
+                duration: durationTime,
+                startAt: { attr: { r: 67 } },
+                attr: { r: 50 }
+            });
+        });
+
+        document.addEventListener("mouseout", (e) => {
+            if (!e.target.matches(".hover-element")) return;
+            gsap.to(circle, {
+                duration: durationTime,
+                startAt: { attr: { r: 50 } },
+                attr: { r: 67 }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('mousemove', (event) => {
+            const interactiveBg = document.querySelector('.logo-bg');
+            const rect = interactiveBg.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const rotateX = (centerY - mouseY) / 20; // Adjust the divisor for more or less tilt
+            const rotateY = (mouseX - centerX) / 20; // Adjust the divisor for more or less tilt
+
+            interactiveBg.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+    </script>
+</body>
+
+</html>
