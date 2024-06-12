@@ -29,10 +29,8 @@ body {
     align-items: end;
     align-content: space-between;
     justify-items: stretch;
-    /* font-family: system-ui, sans-serif; */
     font-family: 'Anton', sans-serif;
     font-weight: 400;
-    /* background-color: #4801ff; */
     overflow: hidden;
 }
 
@@ -48,18 +46,13 @@ a {
     width: 60%;
     height: 60%;
     transform: translate(-50%, -50%);
-    background-image: url('ppbg.png');
-    /* Replace with the path to your PNG image */
+    background-image: url('image/logo-02.png');
     background-size: cover;
-    /* Cover the entire div */
     background-position: center;
-    /* Center the image */
     background-repeat: no-repeat;
-    /* Prevent the image from repeating */
     z-index: -1;
     opacity: 5%;
     filter: blur(4px);
-    /* Place it behind other content */
 }
 
 .footer-section {
@@ -116,47 +109,33 @@ a {
     text-align: right;
 }
 
-/* Styles for the container */
 .container {
     overflow-x: auto;
-    /* Enable horizontal scrolling */
     white-space: nowrap;
-    /* Prevent line breaks */
     width: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    /* Set width to 100% of the viewport */
     perspective: 20vmin;
-    /* transform: rotateZ(10deg); */
     z-index: 1;
 }
 
-/* Styles for the horizontal list */
 .list-wraper {
     list-style-type: none;
-    /* Remove default list bullets */
     padding: 0;
-    /* Remove default padding */
     margin: 0;
     margin-left: 100px;
-    /* Remove default margin */
     display: inline-flex;
-    /* Use flexbox for horizontal layout */
     transform-origin: left;
     transform: rotateX(6deg);
     transform-style: preserve-3d;
 }
 
-/* Style for list items */
 .list-wraper li {
     margin-right: 10px;
-    /* Add some space between list items */
 }
 
-/* Style for the last list item (no margin) */
 .list-wraper li:last-child {
     margin-right: 0;
-    /* Remove margin for the last item */
 }
 
 .list {
@@ -164,7 +143,6 @@ a {
     font-size: 160px;
     font-weight: 1000;
     letter-spacing: 2px;
-    /* margin-right: 150px; */
     margin-left: 150px;
     margin-bottom: 20px;
     text-transform: uppercase;

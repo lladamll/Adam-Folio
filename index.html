@@ -20,9 +20,7 @@
         </div>
     </div>
 
-    <!-- Container to center the horizontal list -->
     <div class="container" id="scrollContainer" onwheel="scrollHorizontally(event)">
-        <!-- Horizontal List -->
         <ul class="list-wraper">
             <li class="list">
                 <span class="container-date-text">
@@ -82,7 +80,7 @@
     <div class="header-section">
         <div class="logo-info">
             <div class="logo">
-                <img class="hover-element" src="pp.png" alt="Logo">
+                <img class="hover-element" src="image/logo-01.png" alt="Logo">
             </div>
             <div class="info">
                 <div class="contact-info">
@@ -129,19 +127,19 @@
         let scrollInterval;
 
         function scrollHorizontally(event) {
-            event.preventDefault(); // Prevent default scrolling behavior
+            event.preventDefault();
 
             var container = document.getElementById("scrollContainer");
             var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
-            container.scrollLeft -= (delta * 50); // Multiply by a factor to adjust scrolling speed
+            container.scrollLeft -= (delta * 50);
         }
 
         function startScrolling(direction) {
             const container = document.getElementById('scrollContainer');
-            const scrollSpeed = 10; // Adjust this value for scroll speed
+            const scrollSpeed = 10;
             scrollInterval = setInterval(() => {
                 container.scrollLeft += direction * scrollSpeed;
-            }, 20); // Adjust interval timing for smoothness
+            }, 20);
         }
 
         function stopScrolling() {
@@ -149,16 +147,14 @@
         }
 
         document.addEventListener('mousemove', (event) => {
-            const threshold = 200; // Distance from the edge to start scrolling
-            const middleZoneTop = window.innerHeight * 0.2; // 40% from the top
-            const middleZoneBottom = window.innerHeight * 0.7; // 60% from the top
+            const threshold = 200;
+            const middleZoneTop = window.innerHeight * 0.2;
+            const middleZoneBottom = window.innerHeight * 0.7;
 
             if (event.clientX < threshold && event.clientY > middleZoneTop && event.clientY < middleZoneBottom) {
-                // Near the middle-left edge
                 stopScrolling();
                 startScrolling(-1);
             } else if (event.clientX > window.innerWidth - threshold && event.clientY > middleZoneTop && event.clientY < middleZoneBottom) {
-                // Near the middle-right edge
                 stopScrolling();
                 startScrolling(1);
             } else {
@@ -174,7 +170,7 @@
         const links = document.querySelectorAll(".link");
         const turbulence = document.querySelector("feTurbulence");
         const circle = document.querySelector(".cursor-circle");
-        const durationTime = 1; //0.4
+        const durationTime = 1;
 
         document.addEventListener("mousemove", (e) => {
             cursor.style.top = e.pageY + "px";
@@ -215,8 +211,8 @@
             const mouseX = event.clientX;
             const mouseY = event.clientY;
 
-            const rotateX = (centerY - mouseY) / 20; // Adjust the divisor for more or less tilt
-            const rotateY = (mouseX - centerX) / 20; // Adjust the divisor for more or less tilt
+            const rotateX = (centerY - mouseY) / 20;
+            const rotateY = (mouseX - centerX) / 20;
 
             interactiveBg.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
