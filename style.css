@@ -47,7 +47,7 @@ a {
     height: 60%;
     transform: translate(-50%, -50%);
     background-image: url('image/logo-02.png');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
@@ -267,6 +267,14 @@ a {
 
     .menu-icon {
         display: flex;
+    }
+
+    .container {
+        margin-top: 60px;
+    }
+
+    .list-wraper {
+        margin-left: 10px;
     }
 
     .list {
