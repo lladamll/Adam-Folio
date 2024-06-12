@@ -207,3 +207,77 @@ a {
     -webkit-text-stroke: initial;
     color: initial;
 }
+
+
+
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.menu-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    opacity: 90%;
+    position: absolute;
+    /* top: 60px; */
+    /* right: 20px; */
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content p {
+    margin: 10px 0;
+}
+
+.menu-icon:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+
+    .header-section .contact-links,
+    .pages {
+        display: none;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    .list {
+        /* list-style-type: none; */
+        font-size: 100px;
+        /* font-weight: 1000;
+        letter-spacing: 2px; */
+        margin-left: 90px;
+        /* margin-bottom: 20px;
+        text-transform: uppercase;
+        text-align: right;
+        transition: color 0.5s, transform 0.5s; */
+    }
+}

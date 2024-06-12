@@ -93,8 +93,8 @@
                         </div>
                     </div>
                     <div class="contact-contact">
-                        <p><a class="hover-element link" href="tel:+1234567890">+(213) 0794 52 35 08</a></p>
-                        <p><a class="hover-element link" href="mailto:example@example.com">bellch.adam@gmail.com</a>
+                        <p><a class="hover-element link" href="tel:+231794523508">+(213) 0794 52 35 08</a></p>
+                        <p><a class="hover-element link" href="mailto:bellch.adam@gmail.com">bellch.adam@gmail.com</a>
                         </p>
                     </div>
                 </div>
@@ -104,8 +104,22 @@
         <div class="contact-links">
             <p><a class="hover-element link" href="https://www.linkedin.com/in/adam-bel/">LinkedIn</a></p>
             <p><a class="hover-element link" href="https://www.behance.net/BelAdam">Behance</a></p>
-            <p><a class="hover-element link" href="#">Instagram</a></p>
+            <!-- <p><a class="hover-element link" href="#">Instagram</a></p> -->
         </div>
+    </div>
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div class="dropdown-content">
+        <p><a class="hover-element link" href="about.html">About</a></p>
+        <br>
+        <p><a class="hover-element link" href="https://www.linkedin.com/in/adam-bel/">LinkedIn</a></p>
+        <p><a class="hover-element link" href="https://www.behance.net/BelAdam">Behance</a></p>
+        <!-- <p><a class="hover-element link" href="#">Instagram</a></p> -->
     </div>
 
     <svg class="cursor" width="75" height="75" viewBox="0 0 140 140">
@@ -216,6 +230,13 @@
 
             interactiveBg.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
+    </script>
+
+    <script>
+        function toggleMenu() {
+            const dropdown = document.querySelector('.dropdown-content');
+            dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+        }
     </script>
 </body>
 
