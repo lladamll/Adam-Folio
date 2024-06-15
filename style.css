@@ -434,6 +434,13 @@ button:active {
     }
 
     .anim {
-        font-weight: 500;
+        font-weight: 400;
     }
+
+    .list:hover {
+        -webkit-text-stroke: initial;
+        color: initial;
+        transform: initial;
+    }
+    
 }
