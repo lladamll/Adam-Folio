@@ -403,6 +403,9 @@ button:active {
 }
 
 @media (max-width: 768px) {
+    .cursor {
+        display: none;
+    }
 
     .header-section .contact-links,
     .pages {
@@ -428,5 +431,9 @@ button:active {
     .list {
         font-size: 100px;
         margin-left: 90px;
+    }
+
+    .anim {
+        font-weight: 500;
     }
 }
