@@ -4,333 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizontal List</title>
+    <title>Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            cursor: none;
-        }
-
-        .cursor {
-            top: -100px;
-            left: -100px;
-            position: fixed;
-            fill: none;
-            stroke: #393939;
-            stroke-width: 4px;
-            filter: url(#filter-1);
-            transform: translate(-50%, -50%) scale(-0.5);
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        body {
+        .loading-image {
             display: flex;
-            flex-direction: column;
-            align-content: space-between;
-            justify-content: space-between;
-        }
-
-        #canvas-wrapper {
-            background-image: radial-gradient(#ffffff 25%, #e2e2e2);
-            display: block;
-            overflow: hidden;
-            position: absolute;
-            z-index: -1;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        #canvas-grid-cells,
-        #canvas-grid-lines {
-            display: block;
-            position: absolute;
-        }
-
-        a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        p {
-            margin: 5px;
-            padding: 0;
-        }
-
-        h2 {
-            margin-bottom: 10px;
-            padding-right: 20px;
-        }
-
-        img {
-            transition: transform 0.5s;
-        }
-
-        img:hover {
-            transform: scale(0.95);
-        }
-
-        .footer-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            text-align: right;
-            flex-direction: row;
-            font-family: 'Roboto', sans-serif;
-            font-size: 15px;
-            z-index: 0;
-            padding: 30px;
-        }
-
-        .pages p {
-            transition: color 0.5s, transform 0.5s;
-        }
-
-        .pages p:hover,
-        a:hover {
-            transform: scale(0.9);
-            color: #474747;
-        }
-
-        .link:hover {
-            opacity: 60%;
-        }
-
-        .logo img {
-            max-width: 70px;
-        }
-
-        .info {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .presentation {
-            font-family: 'Roboto', sans-serif;
-            text-align: justify;
-            margin-left: 100px;
-            margin-right: 100px;
-        }
-
-        #vision {
-            text-align: end;
-            padding-right: 0px;
-            padding-left: 20px;
-        }
-
-        .title-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .line {
-            flex-grow: 1;
-            height: 2px;
-            background-color: black;
-        }
-
-        .section {
-            padding: 20px;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 20px;
-            margin-left: 10px;
-            cursor: none;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-            cursor: none;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-            cursor: none;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 14px;
-            width: 14px;
-            left: 4px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-            cursor: none;
-        }
-
-        input:checked+.slider {
-            background-color: #151515;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(18px);
-        }
-
-        .is-bionic {
-            margin-top: 10px;
-            font-size: 18px;
-            cursor: none;
-        }
-
-        .bionic-switch {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            font-size: 15px;
-            text-transform: uppercase;
-            cursor: none;
-        }
-
-        .header-section {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            text-align: left;
-            flex-direction: row;
-            font-family: 'Roboto', sans-serif;
-            font-size: 15px;
-            z-index: 0;
-            padding: 30px;
-        }
-
-        .header-section p {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .contact-links {
-            text-align: right;
-        }
-
-        .contact-links p {
-            transition: transform 0.5s;
-        }
-
-        .contact-links p:hover {
-            transform: scale(0.95);
-        }
-
-        .menu-icon {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 20px;
-            height: 20px;
-            z-index: 10;
-            position: absolute;
-            top: 30px;
-            right: 20px;
-        }
-
-        .menu-icon .bar {
-            width: 100%;
-            height: 3px;
-            background-color: #000;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        .dropdown-content {
-            display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Roboto', sans-serif;
-            background-color: #fff;
-            opacity: 95%;
-            position: absolute;
-            /* top: 60px; */
-            /* right: 20px; */
-            padding: 20px;
-            width: 100%;
-            height: 100%;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
         }
 
-        .dropdown-content p {
-            margin: 10px 0;
-            transition: transform 0.5s;
-        }
-
-        .dropdown-content p:hover {
-            transform: scale(0.9);
-        }
-
-        .menu-icon:hover {
-            transform: scale(0.9);
+        .loading-image img {
+            max-width: 550px;
         }
 
         @media (max-width: 768px) {
-            .presentation {
-                font-size: 13px;
-            }
-
-            .presentation p {
-                font-size: 16px;
-            }
-
-            .presentation .section {
-                padding: 0px;
-            }
-
-            .bionic-switch-text {
-                font-size: 14px !important;
-            }
-
-            .switch {
-                width: 35px;
-                height: 15px;
-                margin-left: 10px;
-            }
-
-            .slider:before {
-                height: 10px;
-                width: 10px;
-                left: 4px;
-                bottom: 2.5px;
-            }
-
-            .header-section .contact-links,
-            .pages {
-                display: none;
-            }
-
-            .menu-icon {
-                display: flex;
+            .loading-image img {
+                max-width: 450px;
             }
         }
     </style>
@@ -343,51 +35,45 @@
     </background>
 
     <div class="footer-section">
-        <div class="logo-info">
-            <div class="info">
-                <div class="logo">
-                    <img onclick="location='index.html'" class=" hover-element" src="image/logo-02.png" alt="Logo">
-                </div>
-            </div>
+        <div class="anim">
+            <div class="text"></div>
         </div>
         <div class="pages">
             <p><a class="hover-element link" href="index.html">Home</a></p>
+            <p><a class="hover-element link" href="about.html">About</a></p>
         </div>
     </div>
 
-    <div class="presentation">
-        <div class="section bionic-switch">
-            <p class="bionic-switch-text">Try Bionic Reading</p>
-            <label class="switch">
-                <input type="checkbox" id="toggle-bionic">
-                <span class="slider round hover-element"></span>
-            </label>
-        </div>
-        <div class="section">
-            <div class="title-container">
-                <h2 class="hover-element drop-in">About Me</h2>
-                <div class="line"></div>
-            </div>
-            <p class="is-bionic hover-element drop-in-2">I am Adam, a designer with four years of experience. I offer my
-                services to professionals looking to enhance their visual aspect and brand image, or to assist them in
-                creating a new brand. I design graphic elements that reflect each client's unique vision, turning their
-                craziest ideas into reality.</p>
-        </div>
-        <div class="section">
-            <div class="title-container">
-                <div class="line"></div>
-                <h2 class="hover-element drop-in" id="vision">My Vision</h2>
-            </div>
-            <p class="is-bionic hover-element drop-in-2">My vision goes beyond merely providing design services. I
-                aim to accompany, understand, and realize each client's unique vision without creative limits. My
-                goal is to create thoughtful, custom designs perfectly matching their specific needs. I
-                believe that every business and brand has a story to tell, and I aim to capture this essence
-                through my creations.
-            </p>
-        </div>
+    <div class="loading-image">
+        <img src="image/loading.png" alt="loading...">
+        <button class="hover-element" id="seeAllButton" onclick="navigateToBehance()">Check It On
+            Behance !</button>
     </div>
 
     <div class="header-section">
+        <div class="logo-info">
+            <div class="logo">
+                <img class="hover-element" src="image/logo-01.png" alt="Logo">
+            </div>
+            <div class="info">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div>
+                            <p class="text1 hover-element">BELLACHE Adam</p>
+                        </div>
+                        <div class="text2">
+                            <p class="text1 hover-element">Graphic Designer</p>
+                        </div>
+                    </div>
+                    <div class="contact-contact">
+                        <p><a class="hover-element link" href="tel:+231794523508">+(213) 0794 52 35 08</a></p>
+                        <p><a class="hover-element link" href="mailto:bellch.adam@gmail.com">bellch.adam@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="contact-links">
             <p><a class="hover-element link" href="https://www.linkedin.com/in/adam-bel/">LinkedIn</a></p>
             <p><a class="hover-element link" href="https://www.behance.net/BelAdam">Behance</a></p>
@@ -402,6 +88,7 @@
 
     <div class="dropdown-content">
         <p><a class="hover-element link" href="index.html">Home</a></p>
+        <p><a class="hover-element link" href="about.html">About</a></p>
         <br>
         <p><a class="hover-element link" href="https://www.linkedin.com/in/adam-bel/">LinkedIn</a></p>
         <p><a class="hover-element link" href="https://www.behance.net/BelAdam">Behance</a></p>
@@ -634,6 +321,48 @@
 
         ///////////////////////////////////
 
+        let scrollInterval;
+
+        function scrollHorizontally(event) {
+            event.preventDefault();
+
+            var container = document.getElementById("scrollContainer");
+            var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+            container.scrollLeft -= (delta * 50);
+        }
+
+        function startScrolling(direction) {
+            const container = document.getElementById('scrollContainer');
+            const scrollSpeed = 10;
+            scrollInterval = setInterval(() => {
+                container.scrollLeft += direction * scrollSpeed;
+            }, 20);
+        }
+
+        function stopScrolling() {
+            clearInterval(scrollInterval);
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            const threshold = 300;
+            const middleZoneTop = window.innerHeight * 0.2;
+            const middleZoneBottom = window.innerHeight * 0.7;
+
+            if (window.innerWidth > 800 && event.clientX < threshold && event.clientY > middleZoneTop && event.clientY < middleZoneBottom) {
+                stopScrolling();
+                startScrolling(-1);
+            } else if (window.innerWidth > 800 && event.clientX > window.innerWidth - threshold && event.clientY > middleZoneTop && event.clientY < middleZoneBottom) {
+                stopScrolling();
+                startScrolling(1);
+            } else {
+                stopScrolling();
+            }
+        });
+
+        document.addEventListener('mouseleave', stopScrolling);
+
+        ///////////////////////////////////
+
         const cursor = document.querySelector(".cursor");
         const links = document.querySelectorAll(".link");
         const turbulence = document.querySelector("feTurbulence");
@@ -679,47 +408,38 @@
             });
         });
 
-        ///////////////////////////////////
+        /////////////////////////
 
-        const convertToBionic = (element) => {
-            element.dataset.originalContent = element.innerHTML;
-            element.innerHTML = element.innerHTML.split(" ").map(w =>
-                `<b>${w.split("").slice(0, Math.ceil(w.length / 2)).join("")}</b>${w.split("").slice(Math.ceil(w.length / 2), w.length).join("")} `
-            ).join(" ");
-        };
-
-        const revertToOriginal = (element) => {
-            if (element.dataset.originalContent) {
-                element.innerHTML = element.dataset.originalContent;
-                delete element.dataset.originalContent;
-            }
-        };
-
-        const updateBionicText = () => {
-            document.querySelectorAll('.is-bionic').forEach(convertToBionic);
-        };
-
-        const toggleBionic = (event) => {
-            const bionicElements = document.querySelectorAll('.is-bionic');
-            if (event.target.checked) {
-                bionicElements.forEach(convertToBionic);
+        document.getElementById('seeAllButton').addEventListener('click', function () {
+            var listContainer = document.getElementById('all-listContainer');
+            if (listContainer.classList.contains('hidden')) {
+                listContainer.classList.remove('hidden');
             } else {
-                bionicElements.forEach(revertToOriginal);
+                listContainer.classList.add('hidden');
             }
-        };
+        });
 
-        const toggleSwitch = document.getElementById('toggle-bionic');
-        toggleSwitch.addEventListener('change', toggleBionic);
+        /////////////////////////
 
-        if (toggleSwitch.checked) {
-            updateBionicText();
-        }
+        var typing = new Typed(".text", {
+            strings: ["Graphic Design trends #2024", "Creative layout ideas", ">>>>>>>>> Minimalist modern", "Innovative practical", "Innovative professional"],
+            typeSpeed: 100,
+            backSpeed: 40,
+            loop: true,
+        });
 
         /////////////////////////
 
         function toggleMenu() {
             const dropdown = document.querySelector('.dropdown-content');
             dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        /////////////////////////
+
+        function navigateToBehance() {
+            // Additional logic can go here
+            location.href = 'https://www.behance.net/BelAdam';
         }
     </script>
 </body>
